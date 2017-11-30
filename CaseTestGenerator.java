@@ -21,14 +21,14 @@ public class CaseTestGenerator {
  * file = Name of file, extension by default .txt - Change on line 46 if wanted
  */
 	public static void main(String args[]) {
-		int size = 20; 
+		int size = 4000; 
 		boolean dense = true; 
 		boolean weight = false; 
 		boolean selfLoop = false;
 		int weightLowerLimit = 1;
 		int weightUperLimit = 99;
-		char separator = ','; 
-		String filename = "graph"; 
+		char separator = ' '; 
+		String filename = "4000ES"; 
 		generateCaseTest(size, weightLowerLimit, weightUperLimit, dense, weight, separator, filename, selfLoop);
 
 	}
@@ -61,10 +61,12 @@ public class CaseTestGenerator {
 							pos2 = ThreadLocalRandom.current().nextInt(0, size - 1);
 						}
 						if (weight)
-							writer.println(column1[pos1] + separator + column2[pos2] + ","
-									+ ThreadLocalRandom.current().nextInt(weightLowerLimit, weightUperLimit + 1));
-						else
-							writer.println(column1[pos1] + separator + column2[pos2]);
+							writer.println(column1[pos1] + "" +  separator + "" + column2[pos2] + "" +  separator
+									+ "" +  ThreadLocalRandom.current().nextInt(weightLowerLimit, weightUperLimit + 1));
+						else {
+							writer.println(column1[pos1] + "" + separator + "" + column2[pos2]);
+						}
+							
 					}
 				}
 			} else {
@@ -79,10 +81,10 @@ public class CaseTestGenerator {
 						}
 
 						if (weight) 
-							writer.println(column1[pos1] + separator + column2[pos2] + separator
-									+ ThreadLocalRandom.current().nextInt(weightLowerLimit, weightUperLimit + 1));
+							writer.println(column1[pos1] + "" +  separator + "" +  column2[pos2] + "" +  separator
+									+ "" +  ThreadLocalRandom.current().nextInt(weightLowerLimit, weightUperLimit + 1));
 						 else 
-							writer.println(column1[pos1] + separator + column2[pos2]);						
+							writer.println(column1[pos1] + "" +  separator + "" +  column2[pos2]);						
 					}
 			}			
 			writer.close();
